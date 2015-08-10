@@ -1,0 +1,13 @@
+.hero-unit(ng-controller="MainController as main")
+  .search-container
+    %form
+      %input(ng-model="main.searchQuery" placeholder="type your query here...")
+      %button(ng-click="main.submitSearch()")
+        Submit
+  .results-container
+    .result-item(ng-repeat="resultItem in main.getResultsPreview()")
+      %img.preview-image-element(ng-src="{{resultItem.preview}}")
+      .svg-url {{resultItem.svg}}
+  .error-container(ng-if="main.isSearchError()")
+    An unknown error has occurred
+
